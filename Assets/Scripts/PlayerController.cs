@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody _rb;
     Vector3 _dir;
     [SerializeField, Header("ˆÚ“®‘¬“x")] int _moveSpeed;
+    [SerializeField] GameObject _tmpLookAt;
     // Start is called before the first frame update
     void Start()
     {
