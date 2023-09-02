@@ -8,7 +8,6 @@ public class ShotController : MonoBehaviour
     [SerializeField, Header("éÀíˆãóó£")] float _range = 10;
     [SerializeField, Header("éÀåÇèÍèä")] Transform _shotPosition;
     [SerializeField, Header("ëŒè€")] LayerMask _layerMask;
-    [SerializeField] LineRenderer _lineRenderer;
     [SerializeField, Header("è∆èÄ")] Image _crossHair;
 
     void Update()
@@ -26,21 +25,13 @@ public class ShotController : MonoBehaviour
             hitPosition = hit.point;
             hitCollider = hit.collider;
         }
-
         if (Input.GetButtonDown("Fire1"))
         {
-            ShotLaser(hitPosition);
             if (hitCollider)
             {
                 Debug.Log("ìñÇΩÇËÇ‹ÇµÇΩ");
             }
         }
-    }
-
-    void ShotLaser(Vector3 destination)
-    {
-        Vector3[] shotLaserPosition = { _shotPosition.position, destination };
-        _lineRenderer.positionCount = shotLaserPosition.Length;
-        _lineRenderer.SetPositions(shotLaserPosition);
+        _crossHair.transform.position = _shotPosition.transform.position - _shotPosition.right * (_range - 1);
     }
 }
