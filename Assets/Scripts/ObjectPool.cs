@@ -9,7 +9,7 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> _objectPool;
     private void Awake()
     {
-
+        CreatePool();
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class ObjectPool : MonoBehaviour
             GameObject bullet = Instantiate(_bullet);
             bullet.SetActive(false);
             _objectPool.Add(bullet);
+            bullet.transform.parent = this.transform;
         }
     }
     public GameObject GetBullet(Vector3 position)
@@ -34,13 +35,14 @@ public class ObjectPool : MonoBehaviour
             if(_objectPool[i].activeSelf == false)
             {
                 GameObject bullet = _objectPool[i];
+                bullet.transform.position = position;
                 bullet.SetActive(true);
                 return bullet;
             }
         }
         //ëSÇƒObjectÇégópÇµÇƒÇ¢ÇΩèÍçá
         GameObject newBullet = Instantiate(_bullet, position, transform.rotation);
-        newBullet.SetActive(false);
+        //newBullet.SetActive(false);
         _objectPool.Add(newBullet);
         return newBullet;
     }
