@@ -16,6 +16,7 @@ public class BossController : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 playerTransform = _playerController.transform.position;
+        transform.position = new Vector3(-25f, playerTransform.y, playerTransform.z);
     }
 }
