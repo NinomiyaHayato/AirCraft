@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _dir = Vector3.forward * _h + Vector3.right * _v;
+        _dir = Vector3.forward * _v + Vector3.right * _h;
         _dir = Camera.main.transform.TransformDirection(_dir);
         if(_v != 0 || _h != 0)
         {
             transform.forward = _dir;
         }
-        _rb.velocity = _dir.normalized * _moveSpeed + _rb.velocity.y * Vector3.up;
+        _rb.velocity = _dir.normalized * _moveSpeed;
     }
 }
