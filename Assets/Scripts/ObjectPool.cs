@@ -5,24 +5,31 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField, Header("最初にオブジェクトを何個生成するか")] int _maxCount;
-    [SerializeField, Header("生成するGameObject")] GameObject _bullet;
+
     List<GameObject> _objectPool;
+
+    ObjectFactory _currentFactory; //今のfactory
+
+    [SerializeField] NormalBulletFactory _normalBlletFactory;
+    [SerializeField] SpecialBuleetFactory _specialBulletFactory;
+
+
     private void Awake()
     {
+        SetFactory(_normalBlletFactory);
         CreatePool();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetFactory(ObjectFactory factory) //factoryの切り替え
     {
-        
+        _currentFactory = factory;
     }
+
     public void CreatePool()
     {
         _objectPool = new List<GameObject>();
         for(int i = 0; i < _maxCount; i++)
         {
-            GameObject bullet = Instantiate(_bullet);
+            GameObject bullet = _currentFactory.CreateObject(Vector3.zero);
             bullet.SetActive(false);
             _objectPool.Add(bullet);
             bullet.transform.parent = this.transform;
@@ -41,8 +48,7 @@ public class ObjectPool : MonoBehaviour
             }
         }
         //全てObjectを使用していた場合
-        GameObject newBullet = Instantiate(_bullet, position, transform.rotation);
-        //newBullet.SetActive(false);
+        GameObject newBullet = _currentFactory.CreateObject(position);
         _objectPool.Add(newBullet);
         return newBullet;
     }
