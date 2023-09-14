@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class NormalBulletFactory : ObjectFactory
+[CreateAssetMenu(fileName = "NormalBulletFactory", menuName = "Object Factories/Normal Bullet Factory")]
+public class NormalBulletFactory : ScriptableObject,ObjectFactory
 {
     [SerializeField, Header("í èÌÇÃíe")] GameObject _normalBullet;
 

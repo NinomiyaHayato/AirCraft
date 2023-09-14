@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class SpecialBuleetFactory : ObjectFactory
+[CreateAssetMenu(fileName = "SpecialBulletFactory", menuName = "Object Factories/Special Bullet Factory")]
+public class SpecialBuleetFactory : ScriptableObject,ObjectFactory
 {
     [SerializeField, Header("“ÁŽê‚È’e")] GameObject _specialBullet;
 
