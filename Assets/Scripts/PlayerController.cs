@@ -7,12 +7,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody _rb;
     Vector3 _dir;
     [SerializeField, Header("ˆÚ“®‘¬“x")] int _moveSpeed;
-    private Quaternion _quaternionFirst;//player‚ÌŠp“x’²®‚Ì‚½‚ß‚É‰ŠúŠp“x‚Ì•Û‘¶
+    [SerializeField, Header("‘Ì—Í")] int _hp;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _quaternionFirst = transform.rotation;
     }
 
     // Update is called once per frame

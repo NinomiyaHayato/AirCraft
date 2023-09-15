@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField, Header("最初にオブジェクトを何個生成するか")] int _maxCount;
+    [SerializeField, Header("最初に通常のオブジェクトを何個生成するか")] int _maxNormalCount;
+    [SerializeField, Header("最初に特殊なオブジェクトを何個生成するか")] int _maxSpecialCount;
 
-    List<GameObject> _objectPool;
+    List<GameObject> _objectNormalPool = new List<GameObject>();
+    List<GameObject> _objectSpecialPool = new List<GameObject>();
 
     ObjectFactory _currentFactory; //今のfactory
 
@@ -17,31 +19,32 @@ public class ObjectPool : MonoBehaviour
     private void Awake()
     {
         SetFactory(_normalBlletFactory);
-        CreatePool();
+        CreatePool(_maxNormalCount,_objectNormalPool);
+        SetFactory(_specialBulletFactory);
+        CreatePool(_maxSpecialCount, _objectSpecialPool);
     }
     public void SetFactory(ObjectFactory factory) //factoryの切り替え
     {
         _currentFactory = factory;
     }
 
-    public void CreatePool()
+    public void CreatePool(int maxCount,List<GameObject> pool)
     {
-        _objectPool = new List<GameObject>();
-        for(int i = 0; i < _maxCount; i++)
+        for(int i = 0; i < maxCount; i++)
         {
             GameObject bullet = _currentFactory.CreateObject(Vector3.zero);
             bullet.SetActive(false);
-            _objectPool.Add(bullet);
+            pool.Add(bullet);
             bullet.transform.parent = this.transform;
         }
     }
     public GameObject GetBullet(Vector3 position)
     {
-        for(int i = 0; i < _objectPool.Count; i++)
+        for(int i = 0; i < _objectNormalPool.Count; i++)
         {
-            if(_objectPool[i].activeSelf == false)
+            if(_objectNormalPool[i].activeSelf == false)
             {
-                GameObject bullet = _objectPool[i];
+                GameObject bullet = _objectNormalPool[i];
                 bullet.transform.position = position;
                 bullet.SetActive(true);
                 return bullet;
@@ -49,7 +52,7 @@ public class ObjectPool : MonoBehaviour
         }
         //全てObjectを使用していた場合
         GameObject newBullet = _currentFactory.CreateObject(position);
-        _objectPool.Add(newBullet);
+        _objectNormalPool.Add(newBullet);
         return newBullet;
     }
 }
