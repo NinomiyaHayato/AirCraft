@@ -35089,8 +35089,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6cc6f6083a70354aa04d4009f2a12e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNormalCount: 10
-  _maxSpecialCount: 5
+  _maxNormalCount: 100
+  _maxSpecialCount: 100
+  _objectNormalPool: []
+  _objectSpecialPool: []
   _normalBlletFactory: {fileID: 11400000, guid: 2271129f645fc084485b547eb7fc711d, type: 2}
   _specialBulletFactory: {fileID: 11400000, guid: 4b564eedf05752d4baa004b5a6ba8b49, type: 2}
 --- !u!1 &862944302

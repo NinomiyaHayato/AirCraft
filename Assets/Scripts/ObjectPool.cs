@@ -7,8 +7,8 @@ public class ObjectPool : MonoBehaviour
     [SerializeField, Header("最初に通常のオブジェクトを何個生成するか")] int _maxNormalCount;
     [SerializeField, Header("最初に特殊なオブジェクトを何個生成するか")] int _maxSpecialCount;
 
-    List<GameObject> _objectNormalPool = new List<GameObject>();
-    List<GameObject> _objectSpecialPool = new List<GameObject>();
+    public List<GameObject> _objectNormalPool = new List<GameObject>();
+    public List<GameObject> _objectSpecialPool = new List<GameObject>();
 
     ObjectFactory _currentFactory; //今のfactory
 
@@ -38,13 +38,13 @@ public class ObjectPool : MonoBehaviour
             bullet.transform.parent = this.transform;
         }
     }
-    public GameObject GetBullet(Vector3 position)
+    public GameObject GetBullet(Vector3 position,List<GameObject> pool)
     {
-        for(int i = 0; i < _objectNormalPool.Count; i++)
+        for(int i = 0; i < pool.Count; i++)
         {
-            if(_objectNormalPool[i].activeSelf == false)
+            if(pool[i].activeSelf == false)
             {
-                GameObject bullet = _objectNormalPool[i];
+                GameObject bullet = pool[i];
                 bullet.transform.position = position;
                 bullet.SetActive(true);
                 return bullet;
@@ -52,7 +52,7 @@ public class ObjectPool : MonoBehaviour
         }
         //全てObjectを使用していた場合
         GameObject newBullet = _currentFactory.CreateObject(position);
-        _objectNormalPool.Add(newBullet);
+        pool.Add(newBullet);
         return newBullet;
     }
 }
