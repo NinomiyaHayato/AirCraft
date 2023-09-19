@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class GoogleSheetsReader : MonoBehaviour
 {
-    string _googleSheetsURL = "https://script.google.com/macros/s/AKfycbwsg8aJZA7QNEYR6EGjY3y0mJg_LTwDDo2A-mRzlHTJCuGpcFapNQM7TonKAaIzM3U/exec";
+    string _googleSheetsURL = "https://script.google.com/macros/s/AKfycbxOL_iis2_ciy4qWwBAaQ4sFJveidaeZg1U4VymfOBjpXc_cEkoYx7Vjb-J7I6LlOx9/exec";
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,14 @@ public class GoogleSheetsReader : MonoBehaviour
             {
                 string json = www.downloadHandler.text;
 
+                json = "{\"data\": " + json + "}";
+                Debug.Log(json);
+
                 GoogleSheetsData sheetsData = JsonUtility.FromJson<GoogleSheetsData>(json);
+
+                // GoogleSheetsManagerにデータをセット
+                GoogleSheetsManager manager = GoogleSheetsManager.GetInstance();
+                manager._sheetsData = sheetsData;
             }
         }
     }
@@ -38,8 +45,8 @@ public class GoogleSheetsData
 [System.Serializable]
 public class GoogleSheetItem
 {
-    public string No;
+    public int No;
     public string Name;
     public string 弾の名前;
-    public string 発射速度;
+    public int 発射速度;
 }

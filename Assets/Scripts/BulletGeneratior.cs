@@ -45,13 +45,13 @@ public class BulletGeneratior : MonoBehaviour
             _currentTime = 0;
         }
     }
-    public Quaternion GeneratiorRotation()
+    public void GeneratiorRotation()
     {
         float xAngle = Random.Range(_xMin, _xMax);
         float yAngle = Random.Range(_yMin, _yMax);
         float zAngle = Random.Range(_zMin, _zMax);
         Quaternion angle = Quaternion.Euler(xAngle, yAngle, zAngle);
-        return angle;
+        transform.rotation = angle;
     }
 }
 public enum BulletState
