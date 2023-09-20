@@ -9,7 +9,6 @@ public class BulletDataBase : MonoBehaviour
     public int BulletSpeed(int num)
     {
         GoogleSheetsManager manager = GoogleSheetsManager.GetInstance();
-
         if(manager._sheetsData != null)
         {
             var bullet = manager._sheetsData.data.FirstOrDefault(item => item.No == num);

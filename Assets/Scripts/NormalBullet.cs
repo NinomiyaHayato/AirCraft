@@ -5,12 +5,20 @@ using UnityEngine;
 public class NormalBullet : BulletDataBase
 {
     Rigidbody _rb;
+    GoogleSheetsReader _googleSheetRender;
+    [SerializeField, Header("スピード")] int _speed = 0;
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _googleSheetRender = FindObjectOfType<GoogleSheetsReader>();
+        if(_googleSheetRender.IsDataLoading())
+        {
+            _rb = GetComponent<Rigidbody>();
 
-        int speed = BulletSpeed(_searchNum);
-
-        _rb.velocity = Vector3.forward * speed;
+            _speed = BulletSpeed(_searchNum);
+        }
+    }
+    private void Update()
+    {
+        _rb.velocity = Vector3.forward * _speed;
     }
 }

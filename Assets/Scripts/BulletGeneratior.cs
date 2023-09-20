@@ -16,6 +16,7 @@ public class BulletGeneratior : MonoBehaviour
 
     [SerializeField, Header("‚Ç‚Ì’e‚©")] private BulletState _bulletState = BulletState.normal;
     ObjectPool _objectPool;
+    GoogleSheetsReader _googleSheetsReader;
 
     public BulletState BulletState
     {
@@ -28,21 +29,26 @@ public class BulletGeneratior : MonoBehaviour
     private void Start()
     {
         _objectPool = FindObjectOfType<ObjectPool>();
+        _googleSheetsReader = FindObjectOfType<GoogleSheetsReader>();
     }
     private void Update()
     {
-        _currentTime += Time.deltaTime;
-        if(_currentTime >= _timeRimit)
+        if(_googleSheetsReader.IsDataLoading())
         {
-            if(BulletState == BulletState.normal)
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= _timeRimit)
             {
-                _objectPool.GetBullet(transform.position, _objectPool._objectNormalPool);
+                GeneratiorRotation();
+                if (BulletState == BulletState.normal)
+                {
+                    _objectPool.GetBullet(transform.position, _objectPool._objectNormalPool);
+                }
+                else if (BulletState == BulletState.special)
+                {
+                    _objectPool.GetBullet(transform.position, _objectPool._objectSpecialPool);
+                }
+                _currentTime = 0;
             }
-            else if(BulletState == BulletState.special)
-            {
-                _objectPool.GetBullet(transform.position, _objectPool._objectSpecialPool);
-            }
-            _currentTime = 0;
         }
     }
     public void GeneratiorRotation()

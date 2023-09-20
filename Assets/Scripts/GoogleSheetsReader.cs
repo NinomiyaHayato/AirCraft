@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 public class GoogleSheetsReader : MonoBehaviour
 {
     string _googleSheetsURL = "https://script.google.com/macros/s/AKfycbxOL_iis2_ciy4qWwBAaQ4sFJveidaeZg1U4VymfOBjpXc_cEkoYx7Vjb-J7I6LlOx9/exec";
+
+    bool _isLoaded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,7 @@ public class GoogleSheetsReader : MonoBehaviour
     }
     private IEnumerator DownloadGoogleSheetsData()
     {
+        _isLoaded = false;
         using(UnityWebRequest www = UnityWebRequest.Get(_googleSheetsURL))
         {
             yield return www.SendWebRequest();
@@ -33,8 +36,14 @@ public class GoogleSheetsReader : MonoBehaviour
                 // GoogleSheetsManagerにデータをセット
                 GoogleSheetsManager manager = GoogleSheetsManager.GetInstance();
                 manager._sheetsData = sheetsData;
+                _isLoaded = true;
             }
         }
+    }
+
+    public bool IsDataLoading()
+    {
+        return _isLoaded;
     }
 }
 [System.Serializable]
