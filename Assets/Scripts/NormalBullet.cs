@@ -6,7 +6,9 @@ public class NormalBullet : BulletDataBase
 {
     Rigidbody _rb;
     GoogleSheetsReader _googleSheetRender;
-    [SerializeField, Header("スピード")] int _speed = 0;
+    BulletGeneratior _bulletGenaratior;
+    Vector3 _direction;
+
     private void Start()
     {
         _googleSheetRender = FindObjectOfType<GoogleSheetsReader>();
@@ -17,8 +19,20 @@ public class NormalBullet : BulletDataBase
             _speed = BulletSpeed(_searchNum);
         }
     }
+    private void OnEnable()
+    {
+        _bulletGenaratior = FindFirstObjectByType<BulletGeneratior>();
+        _direction = _bulletGenaratior.transform.forward;
+    }
     private void Update()
     {
-        _rb.velocity = Vector3.forward * _speed;
+        _rb.velocity = -_direction.normalized * _speed * 1.5f;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Fiald")
+        {
+            Enabled();
+        }
     }
 }

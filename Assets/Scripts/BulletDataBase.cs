@@ -6,6 +6,8 @@ using System.Linq;
 public class BulletDataBase : MonoBehaviour
 {
     [SerializeField, Header("検索したいNo")]protected int _searchNum;
+    [SerializeField, Header("スピード")]protected int _speed = 0;
+
     public int BulletSpeed(int num)
     {
         GoogleSheetsManager manager = GoogleSheetsManager.GetInstance();
@@ -20,5 +22,9 @@ public class BulletDataBase : MonoBehaviour
             }
         }
         return 0;
+    }
+    public void Enabled()
+    {
+        gameObject.SetActive(false);
     }
 }

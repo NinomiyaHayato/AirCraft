@@ -38,14 +38,17 @@ public class BulletGeneratior : MonoBehaviour
             _currentTime += Time.deltaTime;
             if (_currentTime >= _timeRimit)
             {
-                GeneratiorRotation();
                 if (BulletState == BulletState.normal)
                 {
                     _objectPool.GetBullet(transform.position, _objectPool._objectNormalPool);
+                    GeneratiorRotation();
+                    Vector3 bulletDirection = -transform.forward;
                 }
                 else if (BulletState == BulletState.special)
                 {
                     _objectPool.GetBullet(transform.position, _objectPool._objectSpecialPool);
+                    GeneratiorRotation();
+                    Vector3 bulletDirection = transform.forward;
                 }
                 _currentTime = 0;
             }
