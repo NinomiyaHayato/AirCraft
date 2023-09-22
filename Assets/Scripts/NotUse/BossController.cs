@@ -16,7 +16,7 @@ public class BossController : EnemyBase
         //ˆÈ‰ºA‰¼‚Å’e‚ğ”­Ë‚µ‚Ä‚İ‚é
         for (int i = 0; i < 10; i++)
         {
-            _objectPool.GetBullet(transform.position);
+            //_objectPool.GetBullet(transform.position);
         }
     }
 
