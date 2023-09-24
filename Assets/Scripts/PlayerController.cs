@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IHealthDamageable
 {
     public float _v; //vertical
     public float _h; //holizontal
@@ -29,5 +29,15 @@ public class PlayerController : MonoBehaviour
             transform.forward = _dir;
         }
         _rb.velocity = _dir.normalized * _moveSpeed;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _hp -= damage;
+        
+        if(_hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

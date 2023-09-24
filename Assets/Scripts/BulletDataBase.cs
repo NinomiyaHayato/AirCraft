@@ -23,8 +23,4 @@ public class BulletDataBase : MonoBehaviour
         }
         return 0;
     }
-    public void Enabled()
-    {
-        gameObject.SetActive(false);
-    }
 }

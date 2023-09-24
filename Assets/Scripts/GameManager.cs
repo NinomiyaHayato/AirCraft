@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     GoogleSheetsReader _googleSheetsReader;
     PlayerController _playerController;
+    [SerializeField, Header("’x‚­‚µ‚½Œã‚ÌŽžŠÔ")] float _delayTime;
     bool _timeDelay = false; //ŽžŠÔ’x‰„‚ð“ü‚ê‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
 
     public static GameManager Instance
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
         _googleSheetsReader = FindObjectOfType<GoogleSheetsReader>();
         _playerController = FindObjectOfType<PlayerController>();
     }
+    private void Update()
+    {
+        TimeDelay();
+    }
 
     public void ReStart()
     {
@@ -50,7 +55,7 @@ public class GameManager : MonoBehaviour
         _instance = null;
     }
 
-    public void TimeDelay()
+    public void TimeDelay() //ŽžŠÔ‚Ì’x‰„
     {
         if(_googleSheetsReader.IsDataLoading())
         {
@@ -59,7 +64,14 @@ public class GameManager : MonoBehaviour
 
         if(_timeDelay)
         {
-
+            if (_playerController._h == 0 && _playerController._v == 0)
+            {
+                Time.timeScale = _delayTime;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+            }
         }
     }
 }

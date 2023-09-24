@@ -28,11 +28,4 @@ public class SpecialBullet : BulletDataBase
     {
         _rb.velocity = _direction.normalized * _speed * 1.5f;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Fiald")
-        {
-            Enabled();
-        }
-    }
 }
