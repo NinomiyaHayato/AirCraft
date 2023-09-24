@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float _v; //vertical
-    float _h; //holizontal
+    public float _v; //vertical
+    public float _h; //holizontal
     Rigidbody _rb;
     Vector3 _dir;
     [SerializeField, Header("ˆÚ“®‘¬“x")] int _moveSpeed;
