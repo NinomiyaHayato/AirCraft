@@ -269,7 +269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303286860}
-  m_LocalRotation: {x: 0.097567536, y: -0.74135375, z: 0.1104763, w: 0.6547292}
+  m_LocalRotation: {x: 0.097567536, y: -0.74135375, z: 0.110476315, w: 0.6547291}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -347,7 +347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338135154}
-  m_LocalRotation: {x: 0.05965846, y: -0.7464899, z: 0.06755163, w: 0.6592651}
+  m_LocalRotation: {x: 0.059658457, y: -0.7464899, z: 0.067551635, w: 0.65926516}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35002,6 +35002,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayTime: 0.3
+  _inGame: 0
+  _timeRimit: 0
+  _currentTime: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -69510,6 +69513,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1105918101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1105918102}
+  - component: {fileID: 1105918103}
+  m_Layer: 0
+  m_Name: RankingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1105918102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105918101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1105918103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105918101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c9a5812083cf4fab0c98282d49f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fileName: RankingSystem
 --- !u!43 &1135389088
 Mesh:
   m_ObjectHideFlags: 0
@@ -69743,7 +69791,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171185543}
-  m_LocalRotation: {x: 0.13620387, y: -0.73350203, z: 0.1542245, w: 0.6477949}
+  m_LocalRotation: {x: 0.1362039, y: -0.733502, z: 0.15422449, w: 0.64779484}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -18,21 +18,15 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
-        SetFactory(_normalBlletFactory);
-        CreatePool(_maxNormalCount,_objectNormalPool);
-        SetFactory(_specialBulletFactory);
-        CreatePool(_maxSpecialCount, _objectSpecialPool);
-    }
-    public void SetFactory(ObjectFactory factory) //factoryÇÃêÿÇËë÷Ç¶
-    {
-        _currentFactory = factory;
+        CreatePool(_maxNormalCount,_objectNormalPool,_normalBlletFactory);
+        CreatePool(_maxSpecialCount, _objectSpecialPool,_specialBulletFactory);
     }
 
-    public void CreatePool(int maxCount,List<GameObject> pool)
+    public void CreatePool(int maxCount,List<GameObject> pool,ObjectFactory factory)
     {
         for(int i = 0; i < maxCount; i++)
         {
-            GameObject bullet = _currentFactory.CreateObject(Vector3.zero);
+            GameObject bullet = factory.CreateObject(Vector3.zero);
             bullet.SetActive(false);
             pool.Add(bullet);
             bullet.transform.parent = this.transform;

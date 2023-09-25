@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour,IHealthDamageable
     Vector3 _dir;
     [SerializeField, Header("ˆÚ“®‘¬“x")] int _moveSpeed;
     [SerializeField, Header("‘Ì—Í")] int _hp;
+    GameManager _gameManager;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -37,7 +39,8 @@ public class PlayerController : MonoBehaviour,IHealthDamageable
         
         if(_hp <= 0)
         {
-            Destroy(gameObject);
+            _gameManager.MemoryTime(false);
+            Destroy(gameObject,0.5f);
         }
     }
 }

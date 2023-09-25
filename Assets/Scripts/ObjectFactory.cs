@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ObjectFactory
+public abstract class ObjectFactory : ScriptableObject
 {
-    GameObject CreateObject(Vector3 position);
+   public abstract GameObject CreateObject(Vector3 position);
 }
