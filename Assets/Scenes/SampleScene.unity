@@ -269,7 +269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303286860}
-  m_LocalRotation: {x: 0.0975675, y: -0.74135387, z: 0.110476315, w: 0.654729}
+  m_LocalRotation: {x: 0.0975675, y: -0.74135387, z: 0.11047631, w: 0.654729}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34973,7 +34973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &626740761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35198,13 +35198,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxNormalCount: 200
   _maxSpecialCount: 100
-  _maxRicocheCount: 5
+  _maxRicochetCount: 10
   _objectNormalPool: []
   _objectSpecialPool: []
-  _objectRicochePool: []
-  _normalBlletFactory: {fileID: 11400000, guid: 2271129f645fc084485b547eb7fc711d, type: 2}
-  _specialBulletFactory: {fileID: 11400000, guid: 4b564eedf05752d4baa004b5a6ba8b49, type: 2}
-  _ricochetBulletFactory: {fileID: 11400000, guid: 5548a0caf0b015e4fb52e59a2a41741f, type: 2}
+  _objectRicochetPool: []
+  _bulletFactory: {fileID: 11400000, guid: c4175f1b397ba8142ac3bbf9ce66e65b, type: 2}
 --- !u!1 &862944302
 GameObject:
   m_ObjectHideFlags: 0
@@ -69585,7 +69583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1105918102
 Transform:
   m_ObjectHideFlags: 0
@@ -69620,7 +69618,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23662
+  m_Name: pb_Mesh23666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -69847,7 +69845,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171185543}
-  m_LocalRotation: {x: 0.13620386, y: -0.7335021, z: 0.15422449, w: 0.6477948}
+  m_LocalRotation: {x: 0.13620386, y: -0.7335021, z: 0.15422449, w: 0.6477947}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -69872,7 +69870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1227780096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70280,7 +70278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2025132860
 Transform:
   m_ObjectHideFlags: 0

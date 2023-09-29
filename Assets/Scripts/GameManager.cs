@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
             foreach(var socre in playerScores)
             {
-                Debug.Log(socre);
+                Debug.Log(socre._score);
             }
         }
     }

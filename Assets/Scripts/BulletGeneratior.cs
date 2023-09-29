@@ -52,7 +52,7 @@ public class BulletGeneratior : MonoBehaviour
                 }
                 else
                 {
-                    _objectPool.GetBullet(transform.position, _objectPool._objectRicochePool);
+                    _objectPool.GetBullet(transform.position, _objectPool._objectRicochetPool);
                     GeneratiorRotation();
                     Vector3 bulletDirection = transform.forward;
                 }

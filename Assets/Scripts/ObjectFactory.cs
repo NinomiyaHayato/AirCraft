@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class ObjectFactory : ScriptableObject
 {
-   public abstract GameObject CreateObject(Vector3 position);
+    public abstract GameObject CreateNormalBullet(Vector3 position);
+    public abstract GameObject CreateSpecialBullet(Vector3 position);
+    public abstract GameObject CreateRicochetBullet(Vector3 position);
 }
