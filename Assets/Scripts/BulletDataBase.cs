@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class BulletDataBase : MonoBehaviour
+public abstract class BulletDataBase : MonoBehaviour
 {
-    [SerializeField, Header("検索したいNo")]protected int _searchNum;
     [SerializeField, Header("スピード")]protected int _speed = 0;
 
     public int BulletSpeed(int num)
@@ -23,4 +22,6 @@ public class BulletDataBase : MonoBehaviour
         }
         return 0;
     }
+
+    public abstract void Hit();
 }

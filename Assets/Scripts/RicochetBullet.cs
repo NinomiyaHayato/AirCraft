@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalBullet : BulletDataBase
+public class RicochetBullet : BulletDataBase
 {
     Rigidbody _rb;
     GoogleSheetsReader _googleSheetRender;
@@ -13,7 +11,7 @@ public class NormalBullet : BulletDataBase
     private void Start()
     {
         _googleSheetRender = FindObjectOfType<GoogleSheetsReader>();
-        if(_googleSheetRender.IsDataLoading())
+        if (_googleSheetRender.IsDataLoading())
         {
             _rb = GetComponent<Rigidbody>();
 
@@ -27,11 +25,11 @@ public class NormalBullet : BulletDataBase
     }
     private void Update()
     {
-        _rb.velocity = -_direction.normalized * _speed * 1.5f;
+        _rb.velocity = _direction.normalized * _speed * 1.5f;
     }
 
     public override void Hit()
     {
-        gameObject.SetActive(false);
+        
     }
 }

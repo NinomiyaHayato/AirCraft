@@ -13,8 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("遅くした後の時間")] float _delayTime;
     bool _timeDelay = false; //時間遅延を入れるかどうか及びタイム計測のためののフラグ
     [SerializeField,Header("ゲーム中かどうか")]　bool _inGame = false; //ゲーム中かどうか
-    [SerializeField, Header("次のシーンまでの基準時間")] float _timeRimit;
+    [SerializeField, Header("次のシーンまでの基準時間(まだ未実装)")] float _timeRimit;
     public float _currentTime;//生存時間の計測
+    [SerializeField,Header("ライト")]Light _spotLight;
 
     public static GameManager Instance
     {
@@ -74,10 +75,12 @@ public class GameManager : MonoBehaviour
             if (_playerController._h == 0 && _playerController._v == 0)
             {
                 Time.timeScale = _delayTime;
+                _spotLight.color = Color.white;
             }
             else
             {
                 Time.timeScale = 1.0f;
+                _spotLight.color = Color.red;
             }
         }
     }

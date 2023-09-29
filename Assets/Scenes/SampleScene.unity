@@ -164,7 +164,7 @@ MonoBehaviour:
   _v: 0
   _h: 0
   _moveSpeed: 10
-  _hp: 1
+  _hp: 100
 --- !u!54 &146309593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303286860}
-  m_LocalRotation: {x: 0.097567536, y: -0.74135375, z: 0.110476315, w: 0.6547291}
+  m_LocalRotation: {x: 0.0975675, y: -0.74135387, z: 0.110476315, w: 0.654729}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -347,7 +347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338135154}
-  m_LocalRotation: {x: 0.059658457, y: -0.7464899, z: 0.067551635, w: 0.65926516}
+  m_LocalRotation: {x: 0.059658427, y: -0.74649, z: 0.06755161, w: 0.65926504}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -712,7 +712,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23674
+  m_Name: pb_Mesh23694
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -34957,6 +34957,58 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &626740760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626740762}
+  - component: {fileID: 626740761}
+  m_Layer: 0
+  m_Name: BulletGenarator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &626740761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626740760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b870c70ee1bcd842b201f2b6a33f4eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xMin: -50
+  _xMax: 50
+  _yMin: 60
+  _yMax: 120
+  _zMin: 0
+  _zMax: 0
+  _timeRimit: 8
+  _bulletState: 2
+--- !u!4 &626740762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626740760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.57, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &647437401
 GameObject:
   m_ObjectHideFlags: 0
@@ -34987,7 +35039,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647437403
 MonoBehaviour:
@@ -35005,6 +35057,7 @@ MonoBehaviour:
   _inGame: 0
   _timeRimit: 0
   _currentTime: 0
+  _spotLight: {fileID: 341628243}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -35145,10 +35198,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxNormalCount: 200
   _maxSpecialCount: 100
+  _maxRicocheCount: 5
   _objectNormalPool: []
   _objectSpecialPool: []
+  _objectRicochePool: []
   _normalBlletFactory: {fileID: 11400000, guid: 2271129f645fc084485b547eb7fc711d, type: 2}
   _specialBulletFactory: {fileID: 11400000, guid: 4b564eedf05752d4baa004b5a6ba8b49, type: 2}
+  _ricochetBulletFactory: {fileID: 11400000, guid: 5548a0caf0b015e4fb52e59a2a41741f, type: 2}
 --- !u!1 &862944302
 GameObject:
   m_ObjectHideFlags: 0
@@ -69313,8 +69369,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.09756754, y: -0.74135375, z: 0.11047634, w: 0.6547291}
-  m_LocalPosition: {x: 2.9997754, y: 3.5, z: 0.036700845}
+  m_LocalRotation: {x: 0.09756752, y: -0.7413538, z: 0.110476315, w: 0.654729}
+  m_LocalPosition: {x: 2.9997756, y: 3.5, z: 0.036701918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69543,7 +69599,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1105918103
 MonoBehaviour:
@@ -69564,7 +69620,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23648
+  m_Name: pb_Mesh23662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -69791,7 +69847,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171185543}
-  m_LocalRotation: {x: 0.1362039, y: -0.733502, z: 0.15422449, w: 0.64779484}
+  m_LocalRotation: {x: 0.13620386, y: -0.7335021, z: 0.15422449, w: 0.6477948}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -69811,12 +69867,12 @@ GameObject:
   - component: {fileID: 1227780097}
   - component: {fileID: 1227780096}
   m_Layer: 0
-  m_Name: BulletGenarator (1)
+  m_Name: BulletGenaratorSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1227780096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69835,7 +69891,7 @@ MonoBehaviour:
   _yMax: 300
   _zMin: -15
   _zMax: 15
-  _timeRimit: 0.3
+  _timeRimit: 0.4
   _bulletState: 1
 --- !u!4 &1227780097
 Transform:
@@ -69850,7 +69906,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500172837
 GameObject:
@@ -69981,7 +70037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500172837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9997754, y: 3.5, z: 0.036700845}
+  m_LocalPosition: {x: 2.9997756, y: 3.5, z: 0.036701918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70219,12 +70275,12 @@ GameObject:
   - component: {fileID: 2025132860}
   - component: {fileID: 2025132861}
   m_Layer: 0
-  m_Name: BulletGenarator
+  m_Name: BulletGenaratorNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2025132860
 Transform:
   m_ObjectHideFlags: 0

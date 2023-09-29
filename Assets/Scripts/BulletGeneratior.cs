@@ -50,6 +50,12 @@ public class BulletGeneratior : MonoBehaviour
                     GeneratiorRotation();
                     Vector3 bulletDirection = transform.forward;
                 }
+                else
+                {
+                    _objectPool.GetBullet(transform.position, _objectPool._objectRicochePool);
+                    GeneratiorRotation();
+                    Vector3 bulletDirection = transform.forward;
+                }
                 _currentTime = 0;
             }
         }
@@ -67,4 +73,5 @@ public enum BulletState
 {
     normal,
     special,
+    ricochet,
 }

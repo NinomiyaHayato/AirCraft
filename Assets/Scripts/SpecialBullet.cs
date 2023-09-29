@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialBullet : BulletDataBase
@@ -8,7 +6,8 @@ public class SpecialBullet : BulletDataBase
     GoogleSheetsReader _googleSheetRender;
     BulletGeneratior _bulletGenaratior;
     Vector3 _direction;
-    
+    [SerializeField, Header("åüçıÇµÇΩÇ¢No")] int _searchNum;
+
     private void Start()
     {
         _googleSheetRender = FindObjectOfType<GoogleSheetsReader>();
@@ -27,5 +26,10 @@ public class SpecialBullet : BulletDataBase
     private void Update()
     {
         _rb.velocity = _direction.normalized * _speed * 1.5f;
+    }
+
+    public override void Hit()
+    {
+        gameObject.SetActive(false);
     }
 }

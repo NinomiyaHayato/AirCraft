@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour,IHealthDamageable
         
         if(_hp <= 0)
         {
-            _gameManager.MemoryTime(false);
+            //_gameManager.MemoryTime(false);
             Destroy(gameObject,0.5f);
         }
     }
