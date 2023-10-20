@@ -22,31 +22,24 @@ public class RicochetBullet : BulletDataBase
     {
         _bulletGenaratior = FindFirstObjectByType<BulletGeneratior>();
         _direction = _bulletGenaratior.transform.forward;
+        _rb.AddForce(_direction.normalized * _speed, ForceMode.Impulse);
+    }
+    private void OnDisable()
+    {
+        if(_refrectCount != 0) { _refrectCount = 0; }
     }
     private void Update()
     {
-        _rb.velocity = _direction.normalized * _speed * 1.5f;
-    }
-
-    private Vector3 GetPlayerPosition()
-    {
-        var playerPos = FindObjectOfType<PlayerController>();
-        return playerPos.transform.position;
+        //_rb.velocity = _direction.normalized * _speed * 1.5f;
     }
     public override void Hit()
     {
-        //Vector3 playerPos = GetPlayerPosition();
-        //Vector3 position = transform.position;
-        //Vector3 reflectionDirection = (playerPos - position).normalized;
-        //_rb.velocity = Vector3.zero;
-        //_rb.AddForce(reflectionDirection, ForceMode.Impulse);
-        //_refrectCount++;
-
-        //if(_refrectCount > 2)
-        //{
-        //    _refrectCount = 0;
-        //    gameObject.SetActive(false);
-        //}
-        gameObject.SetActive(false);
+        if (_refrectCount == 0)
+        {
+            Vector3 stagePosition = GameManager.Instance._stagePosition;
+            stagePosition = new Vector3(stagePosition.x += Random.Range(-10, 10), stagePosition.y += Random.Range(-10, 10), stagePosition.z += Random.Range(-10, 10));
+            _rb.AddForce(stagePosition, ForceMode.Impulse);
+        }
+        else { gameObject.SetActive(false); }
     }
 }
