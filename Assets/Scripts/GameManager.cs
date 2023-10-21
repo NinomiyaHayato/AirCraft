@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        TimeDelay();
+        //TimeDelay();
     }
 
     public void ReStart()
