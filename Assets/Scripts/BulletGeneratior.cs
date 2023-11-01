@@ -18,6 +18,8 @@ public class BulletGeneratior : MonoBehaviour
     ObjectPool _objectPool;
     GoogleSheetsReader _googleSheetsReader;
 
+    Quaternion _initRotation;
+
     public BulletState BulletState
     {
         get => _bulletState;
@@ -30,6 +32,9 @@ public class BulletGeneratior : MonoBehaviour
     {
         _objectPool = FindObjectOfType<ObjectPool>();
         _googleSheetsReader = FindObjectOfType<GoogleSheetsReader>();
+
+        //‰ŠúŠp“x‚ğ•Û‘¶
+        _initRotation = transform.rotation;
     }
     private void Update()
     {
@@ -56,6 +61,9 @@ public class BulletGeneratior : MonoBehaviour
                     GeneratiorRotation();
                     Vector3 bulletDirection = transform.forward;
                 }
+
+                //‰Šú‚Ì‰ñ“]‚É–ß‚·
+                transform.rotation = _initRotation;
                 _currentTime = 0;
             }
         }
