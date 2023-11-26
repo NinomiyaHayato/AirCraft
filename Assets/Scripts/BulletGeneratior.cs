@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletGeneratior : MonoBehaviour
+public  class BulletGeneratior : MonoBehaviour
 {
     [SerializeField, Header("xé≤ÇÃç≈è¨äpìx")] float _xMin;
     [SerializeField, Header("xé≤ÇÃç≈ëÂäpìx")] float _xMax;
@@ -18,23 +18,10 @@ public class BulletGeneratior : MonoBehaviour
     ObjectPool _objectPool;
     GoogleSheetsReader _googleSheetsReader;
 
-    Quaternion _initRotation;
-
-    public BulletState BulletState
-    {
-        get => _bulletState;
-        set
-        {
-            _bulletState = value;
-        }
-    }
     private void Start()
     {
         _objectPool = FindObjectOfType<ObjectPool>();
         _googleSheetsReader = FindObjectOfType<GoogleSheetsReader>();
-
-        //èâä˙äpìxÇï€ë∂
-        _initRotation = transform.rotation;
     }
     private void Update()
     {
@@ -43,27 +30,28 @@ public class BulletGeneratior : MonoBehaviour
             _currentTime += Time.deltaTime;
             if (_currentTime >= _timeRimit)
             {
-                if (BulletState == BulletState.normal)
+                if (_bulletState == BulletState.normal)
                 {
-                    _objectPool.GetBullet(transform.position, _objectPool._objectNormalPool);
+                    var bullet = _objectPool.GetBullet(transform.position, _objectPool._objectNormalPool);
                     GeneratiorRotation();
+                    bullet.GetComponent<BulletDataBase>().Set(transform.forward);
                     Vector3 bulletDirection = -transform.forward;
                 }
-                else if (BulletState == BulletState.special)
+                else if (_bulletState == BulletState.special)
                 {
-                    _objectPool.GetBullet(transform.position, _objectPool._objectSpecialPool);
+                    var bullet = _objectPool.GetBullet(transform.position, _objectPool._objectSpecialPool);
                     GeneratiorRotation();
+                    bullet.GetComponent<BulletDataBase>().Set(transform.forward);
                     Vector3 bulletDirection = transform.forward;
                 }
                 else
                 {
-                    _objectPool.GetBullet(transform.position, _objectPool._objectRicochetPool);
+                    var bullet = _objectPool.GetBullet(transform.position, _objectPool._objectRicochetPool);
                     GeneratiorRotation();
+                    bullet.GetComponent<BulletDataBase>().Set(transform.forward);
                     Vector3 bulletDirection = transform.forward;
                 }
-
-                //èâä˙ÇÃâÒì]Ç…ñﬂÇ∑
-                transform.rotation = _initRotation;
+                //GenerateBullet();
                 _currentTime = 0;
             }
         }
@@ -76,6 +64,8 @@ public class BulletGeneratior : MonoBehaviour
         Quaternion angle = Quaternion.Euler(xAngle, yAngle, zAngle);
         transform.rotation = angle;
     }
+
+    //protected abstract void GenerateBullet();
 }
 public enum BulletState
 {

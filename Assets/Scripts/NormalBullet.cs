@@ -8,7 +8,10 @@ public class NormalBullet : BulletDataBase
     GoogleSheetsReader _googleSheetRender;
     BulletGeneratior _bulletGenaratior;
     Vector3 _direction;
+
+
     [SerializeField, Header("åüçıÇµÇΩÇ¢No")] int _searchNum;
+
 
     private void Start()
     {
@@ -20,14 +23,9 @@ public class NormalBullet : BulletDataBase
             _speed = BulletSpeed(_searchNum);
         }
     }
-    private void OnEnable()
-    {
-        _bulletGenaratior = FindFirstObjectByType<BulletGeneratior>();
-        _direction = _bulletGenaratior.transform.forward;
-    }
     private void Update()
     {
-        _rb.velocity = -_direction.normalized * _speed * 1.5f;
+        _rb.velocity =  transform.forward * _speed * 1.5f;
     }
 
     public override void Hit()

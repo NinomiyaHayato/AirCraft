@@ -7,6 +7,11 @@ public abstract class BulletDataBase : MonoBehaviour
 {
     [SerializeField, Header("スピード")]protected int _speed = 0;
 
+    public void Set(Vector3 direction)
+    {
+        transform.forward = direction;
+    }
+
     public int BulletSpeed(int num)
     {
         GoogleSheetsManager manager = GoogleSheetsManager.GetInstance();

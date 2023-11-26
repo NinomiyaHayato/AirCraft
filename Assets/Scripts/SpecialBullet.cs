@@ -18,14 +18,9 @@ public class SpecialBullet : BulletDataBase
             _speed = BulletSpeed(_searchNum);
         }
     }
-    private void OnEnable()
-    {
-        _bulletGenaratior = FindFirstObjectByType<BulletGeneratior>();
-        _direction = _bulletGenaratior.transform.forward;
-    }
     private void Update()
     {
-        _rb.velocity = _direction.normalized * _speed * 1.5f;
+        _rb.velocity = transform.forward * _speed * 1.5f;
     }
 
     public override void Hit()

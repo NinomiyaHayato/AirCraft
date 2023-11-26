@@ -24,21 +24,12 @@ public class RicochetBullet : BulletDataBase
             _rb = GetComponent<Rigidbody>();
 
             _speed = BulletSpeed(_searchNum);
-            if (RefrectBool) { _rb.AddForce(_direction * _speed * 3f, ForceMode.Impulse); }
+            if (RefrectBool) { _rb.AddForce(transform.forward * _speed * 3f, ForceMode.Impulse); }
         }
-    }
-    private void OnEnable()
-    {
-        _bulletGenaratior = FindFirstObjectByType<BulletGeneratior>();
-        _direction = _bulletGenaratior.transform.forward;
     }
     private void OnDisable()
     {
         _refrectCount = 0;
-    }
-    private void Update()
-    {
-        
     }
     public override void Hit()
     {
