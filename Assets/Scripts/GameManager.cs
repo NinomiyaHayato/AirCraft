@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     GoogleSheetsReader _googleSheetsReader;
     PlayerController _playerController;
     RankingSystem _rankingSystem;
+    ObjectPool _objectPool;
 
     [SerializeField, Header("遅くした後の時間")] float _delayTime;
-    bool _timeDelay = false; //時間遅延を入れるかどうか及びタイム計測のためののフラグ
+    public bool _timeDelay = false; //時間遅延を入れるかどうか及びタイム計測のためののフラグ
     [SerializeField,Header("ゲーム中かどうか")]　bool _inGame = false; //ゲーム中かどうか
     [SerializeField, Header("次のシーンまでの基準時間(まだ未実装)")] float _timeRimit;
     public float _currentTime;//生存時間の計測
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         _googleSheetsReader = FindObjectOfType<GoogleSheetsReader>();
         _playerController = FindObjectOfType<PlayerController>();
         _rankingSystem = FindObjectOfType<RankingSystem>();
+        _objectPool = FindObjectOfType<ObjectPool>();
         _stagePosition = GameObject.Find("Stage").transform.position;
     }
     private void Update()
@@ -76,12 +78,12 @@ public class GameManager : MonoBehaviour
         {
             if (_playerController._h == 0 && _playerController._v == 0)
             {
-                Time.timeScale = _delayTime;
+                _objectPool.Pause();
                 _spotLight.color = Color.white;
             }
             else
             {
-                Time.timeScale = 1.0f;
+                _objectPool.Resume();
                 _spotLight.color = Color.red;
             }
         }

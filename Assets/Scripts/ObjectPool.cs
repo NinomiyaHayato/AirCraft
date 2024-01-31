@@ -15,6 +15,7 @@ public class ObjectPool : MonoBehaviour
 
     [SerializeField] ObjectFactory _bulletFactory; // 通常の弾、特殊な弾、跳弾を生成するためのファクトリー
 
+
     private void Awake()
     {
         CreatePool(_maxNormalCount, _objectNormalPool, _bulletFactory, _bulletFactory.CreateNormalBullet);
@@ -61,6 +62,38 @@ public class ObjectPool : MonoBehaviour
         {
             newBullet = _bulletFactory.CreateRicochetBullet(position);
             return newBullet;
+        }
+    }
+
+    //下記からpause/resume機能
+
+    public void Pause()
+    {
+        PauseResumeHelper(_objectNormalPool,true);
+        PauseResumeHelper(_objectSpecialPool,true);
+        PauseResumeHelper(_objectRicochetPool,true);
+    }
+
+    public void Resume()
+    {
+        PauseResumeHelper(_objectNormalPool,false);
+        PauseResumeHelper(_objectSpecialPool,false);
+        PauseResumeHelper(_objectRicochetPool,false);
+    }
+
+    private void PauseResumeHelper(List<GameObject> pool,bool isWhich)
+    {
+        foreach(var bullet in pool)
+        {
+            if(bullet.activeSelf)
+            {
+                IPause pause = bullet.GetComponent<IPause>();
+                if(pause != null)
+                {
+                    if (isWhich) { pause.Pause(); }
+                    else { pause.Resume(); }
+                }
+            }
         }
     }
 }
