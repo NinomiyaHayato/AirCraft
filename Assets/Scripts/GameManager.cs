@@ -10,14 +10,18 @@ public class GameManager : MonoBehaviour
     PlayerController _playerController;
     RankingSystem _rankingSystem;
     ObjectPool _objectPool;
+    Laser _laser;
 
     [SerializeField, Header("遅くした後の時間")] float _delayTime;
     public bool _timeDelay = false; //時間遅延を入れるかどうか及びタイム計測のためののフラグ
-    [SerializeField,Header("ゲーム中かどうか")]　bool _inGame = false; //ゲーム中かどうか
+    [SerializeField,Header("ゲーム中かどうか")]　bool _inGame = true; //ゲーム中かどうか
     [SerializeField, Header("次のシーンまでの基準時間(まだ未実装)")] float _timeRimit;
     public float _currentTime;//生存時間の計測
     [SerializeField,Header("ライト")]Light _spotLight;
     public Vector3 _stagePosition;//ステージの中心座標
+
+    [SerializeField, Header("Playerのmodel")] GameObject _drone;
+    [SerializeField, Header("爆発のパーティクル")] GameObject _exprosionEffect;
 
     public static GameManager Instance
     {
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
         _playerController = FindObjectOfType<PlayerController>();
         _rankingSystem = FindObjectOfType<RankingSystem>();
         _objectPool = FindObjectOfType<ObjectPool>();
+        _laser = FindObjectOfType<Laser>();
         _stagePosition = GameObject.Find("Stage").transform.position;
     }
     private void Update()
@@ -79,12 +84,14 @@ public class GameManager : MonoBehaviour
             if (_playerController._h == 0 && _playerController._v == 0)
             {
                 _objectPool.Pause();
-                _spotLight.color = Color.white;
+                _laser.Pause();
+                _spotLight.color = Color.cyan;
             }
             else
             {
                 _objectPool.Resume();
-                _spotLight.color = Color.red;
+                _laser.Resume();
+                _spotLight.color = Color.yellow;
             }
         }
     }
@@ -106,6 +113,16 @@ public class GameManager : MonoBehaviour
                 Debug.Log(socre._score);
             }
         }
+    }
+
+    public void ParticleTrigger(Vector3 playerPos)
+    {
+        if(_inGame)
+        {
+            Instantiate(_exprosionEffect,playerPos,Quaternion.identity);
+            Instantiate(_drone,new Vector3(playerPos.x,playerPos.y + 3,playerPos.z),new Quaternion(180,0,0,0)); 
+        }
+        _inGame = false;
     }
 
     public void AllBulletDestroy()

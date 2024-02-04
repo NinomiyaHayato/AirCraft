@@ -22,11 +22,6 @@ public class NormalBullet : BulletDataBase,IPause
             _speed = BulletSpeed(_searchNum);
         }
     }
-    private void Update()
-    {
-        
-    }
-
     public override void Hit()
     {
         gameObject.SetActive(false);

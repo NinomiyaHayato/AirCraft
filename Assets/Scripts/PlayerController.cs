@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour,IHealthDamageable
     Vector3 _dir;
     [SerializeField, Header("ˆÚ“®‘¬“x")] int _moveSpeed;
     [SerializeField, Header("‘Ì—Í")] int _hp;
+    
     GameManager _gameManager;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour,IHealthDamageable
     {
         _v = Input.GetAxisRaw("Vertical");
         _h = Input.GetAxisRaw("Horizontal");
+        if (_hp <= 0)
+        {
+            GameManager.Instance.ParticleTrigger(this.transform.position);
+            Destroy(gameObject, 0.1f);
+        }
     }
     private void FixedUpdate()
     {

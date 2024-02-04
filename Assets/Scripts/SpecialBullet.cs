@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpecialBullet : BulletDataBase
+public class SpecialBullet : BulletDataBase,IPause
 {
     Rigidbody _rb;
     GoogleSheetsReader _googleSheetRender;
@@ -18,13 +18,18 @@ public class SpecialBullet : BulletDataBase
             _speed = BulletSpeed(_searchNum);
         }
     }
-    private void Update()
-    {
-        _rb.velocity = transform.forward * _speed * 1.5f;
-    }
-
     public override void Hit()
     {
         gameObject.SetActive(false);
+    }
+    public void Pause()
+    {
+        _rb.velocity = transform.forward * 0.5f;
+    }
+
+    public void Resume()
+    {
+
+        _rb.velocity = transform.forward * _speed * 1.5f;
     }
 }

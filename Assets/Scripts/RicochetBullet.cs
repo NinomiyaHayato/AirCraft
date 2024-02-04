@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RicochetBullet : BulletDataBase
+public class RicochetBullet : BulletDataBase,IPause
 {
     Rigidbody _rb;
     GoogleSheetsReader _googleSheetRender;
@@ -42,5 +42,15 @@ public class RicochetBullet : BulletDataBase
             _refrectCount++;
         }
         else { gameObject.SetActive(false); }
+    }
+
+    public void Pause()
+    {
+        _rb.AddForce(transform.forward * _speed * -2.5f, ForceMode.Impulse);
+    }
+
+    public void Resume()
+    {
+        _rb.AddForce(transform.forward * _speed * 3f, ForceMode.Impulse);
     }
 }
