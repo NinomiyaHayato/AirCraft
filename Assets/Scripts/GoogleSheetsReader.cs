@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class GoogleSheetsReader : MonoBehaviour
 {
-    string _googleSheetsURL = "https://script.google.com/macros/s/AKfycbxOL_iis2_ciy4qWwBAaQ4sFJveidaeZg1U4VymfOBjpXc_cEkoYx7Vjb-J7I6LlOx9/exec";
+    string _googleSheetsURL = "https://script.google.com/macros/s/AKfycbyeqFOG51pbmi3YRhN2EE8CpJNkZ1_5aTswC8ytlcLrpgtijTc5u8hyNTbbcRRVXgBh/exec";
 
     bool _isLoaded = false;
     // Start is called before the first frame update
